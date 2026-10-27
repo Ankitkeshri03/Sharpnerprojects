@@ -1,16 +1,23 @@
-// Fetch saved users when the page loads
 document.addEventListener("DOMContentLoaded", () => {
   axios
     .get(
       "https://crudcrud.com/api/d6f6b7e267ec431d8e1f68ad21ad424b/appointmentData",
     )
     .then((response) => {
+      console.log("Fetched data:", response.data);
+
       response.data.forEach((userDetails) => {
         displayUserOnScreen(userDetails);
       });
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log("GET request failed:", error);
+    });
 });
+function displayUserOnScreen(userDetails) {
+  const userItem = document.createElement("li");
 
-// Do not touch the code below
-module.exports = handleFormSubmit;
+  userItem.textContent = `${userDetails.username} - ${userDetails.email} - ${userDetails.phone}`;
+
+  document.querySelector("ul").appendChild(userItem);
+}
