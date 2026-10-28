@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">YOUR SPACE, YOUR THOUGHTS</p>
+        <h1>Notes <span>Manager</span></h1>
+        <p class="subtitle">Capture the little things before they slip away.</p>
+      </header>
+
+      <section class="composer card" aria-labelledby="form-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">QUICK CAPTURE</p>
+            <h2 id="form-title">Create a note</h2>
+          </div>
+          <span class="heading-mark" aria-hidden="true">✦</span>
+        </div>
+
+        <form id="note-form">
+          <label for="note-title">Note title</label>
+          <input
+            id="note-title"
+            name="title"
+            type="text"
+            maxlength="120"
+            placeholder="e.g. Ideas for the weekend"
+            required
+          />
+
+          <label for="note-description">Note description</label>
+          <textarea
+            id="note-description"
+            name="description"
+            rows="4"
+            maxlength="3000"
+            placeholder="Write down what you want to remember…"
+            required
+          ></textarea>
+
+          <label for="note-date"
+            >Reminder date <span class="optional">(optional)</span></label
+          >
+          <input id="note-date" name="date" type="date" />
+
+          <button class="primary-button" type="submit">
+            <span aria-hidden="true">＋</span> Add note
+          </button>
+          <p
+            id="form-message"
+            class="message"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+      </section>
+
+      <section class="notes-section" aria-labelledby="notes-heading">
+        <div class="notes-topline">
+          <div>
+            <p class="eyebrow">YOUR COLLECTION</p>
+            <h2 id="notes-heading">
+              Saved notes <span id="note-count" class="count">0</span>
+            </h2>
+          </div>
+          <div class="search-wrap">
+            <label class="sr-only" for="search-title"
+              >Search notes by title</label
+            >
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="search-title"
+              type="search"
+              placeholder="Search by title…"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <p id="loading-message" class="loading">Loading your notes…</p>
+        <div id="notes-list" class="notes-grid"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <span class="empty-icon" aria-hidden="true">✧</span>
+          <h3 id="empty-title">No notes yet</h3>
+          <p id="empty-description">
+            Add your first note above and it will be waiting here after a
+            refresh.
+          </p>
+        </div>
+      </section>
+
+      <footer>Made for your thoughts <span aria-hidden="true">♥</span></footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
